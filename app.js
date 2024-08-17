@@ -4,9 +4,15 @@ const port = process.env.PORT || 3000
 
 app.get('/', (req, res) => {
   res.json({
-    message: 'Hello, world!',
+    message: 'Hola Mundo',
   })
-})
+});
+
+app.get('/one', (req, res) => {
+  res.json({
+    message: 'One',
+  })
+});
 
 app.listen(port, () => {
   console.log(`App is listening on port ${port}`)
