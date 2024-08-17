@@ -1,11 +1,11 @@
 name: Build and deploy the application to Koyeb
 
 on:
-  schedule:
-    - cron: '55 7 * * *'
+##  schedule:
+##    - cron: '55 7 * * *'
   push:
     branches:
-      - '*'
+      - main
 
 jobs:
   deploy:

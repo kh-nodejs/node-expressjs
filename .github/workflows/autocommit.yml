@@ -1,8 +1,14 @@
 name: Keep Repository Active
 
 on:
-  schedule:
-    - cron: '0 0 */28 * *'
+  # schedule:
+  #   - cron: '0 0 */28 * *'
+
+  workflow_dispatch:
+    inputs:
+      commit:
+        description: 'Commit'
+        required: true  
 
 jobs:
   create-empty-commit:

@@ -1,9 +1,11 @@
 name: Cleanup Koyeb application
 
 on:
-  delete:
-    branches:
-      - '*'
+  workflow_dispatch:
+    inputs:
+      destroy:
+        description: 'Destroy'
+        required: true
 
 jobs:
   cleanup:
