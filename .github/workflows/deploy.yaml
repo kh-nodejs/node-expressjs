@@ -3,9 +3,15 @@ name: Build and deploy the application to Koyeb
 on:
 ##  schedule:
 ##    - cron: '55 7 * * *'
-  push:
-    branches:
-      - main
+  # push:
+  #   branches:
+  #     - main
+
+  workflow_dispatch:
+    inputs:
+      deploy:
+        description: 'Deploy'
+        required: true  
 
 jobs:
   deploy:
