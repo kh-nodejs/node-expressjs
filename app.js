@@ -26,6 +26,12 @@ app.get('/three', (req, res) => {
   })
 });
 
+app.get('/four', (req, res) => {
+  res.json({
+    message: 'Four',
+  })
+});
+
 app.listen(port, () => {
   console.log(`App is listening on port ${port}`)
 })
