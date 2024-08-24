@@ -1,5 +1,7 @@
 FROM node:slim
 
+ARG SUPABASE_KEY
+
 WORKDIR /app
 COPY . .
 RUN npm ci
