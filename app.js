@@ -1,6 +1,6 @@
 const express = require("express");
 
-const { createClient, QueryResult, QueryData, QueryError } = require("@supabase/supabase-js");
+const { createClient } = require("@supabase/supabase-js");
 
 require('dotenv').config()
 
@@ -37,31 +37,19 @@ app.get("/four", (req, res) => {
   });
 });
 
-app.get("/five", (req, res) => {
+app.get("/five", async (req, res) => {
   const supabaseUrl = "https://obpglrrzjmajyxslbowq.supabase.co";
   const supabaseKey = process.env.SUPABASE_KEY;
   const supabase = createClient(supabaseUrl, supabaseKey);
 
+  console.log(supabase)
 
+  const { data, error } = await supabase
+  .from('tickets')
+  .select()
 
-  const ticketsQuery = supabase.from("tickets")
-    .select(`
-      id,
-      ticket,
-      date,
-      execution,
-      time,
-      type,
-      status,
-      comments,
-      priority
-    `);
-  var tickets = QueryData<typeof ticket>;
-
-  const { data, error } = await ticketsQuery;
-  if (error) throw error;
-
-
+  
+  //if (error) throw error;
   res.json({
     message: "Five",
     data: data
