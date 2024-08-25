@@ -44,15 +44,15 @@ app.get("/five", async (req, res) => {
 
   console.log(supabase);
 
-  const query = await supabase
+  let tickets = await supabase
   .from('ticket')
-  .select();
+  .select('*');
 
   var data = [];
 
-  if(query['data']){
-    console.log(query['data']);
-    data = query['data'];
+  if(tickets['data']){
+    console.log(tickets['data']);
+    data = tickets['data'];
   }
   
   //if (error) throw error;
