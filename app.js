@@ -42,6 +42,8 @@ app.get("/five", async (req, res) => {
   const supabaseKey = process.env.SUPABASE_KEY;
   const supabase = createClient(supabaseUrl, supabaseKey);
 
+  console.log(supabaseKey)
+
   //console.log(supabase);
 
   let tickets = await supabase
