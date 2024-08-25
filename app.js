@@ -77,7 +77,7 @@ app.get("/view", async (req, res) => {
 });
 
 
-app.get("/set", async (req, res) => {
+app.post("/set", async (req, res) => {
   const supabaseUrl = "https://obpglrrzjmajyxslbowq.supabase.co";
   const supabaseKey = process.env.SUPABASE_KEY;
   const supabase = createClient(
