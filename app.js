@@ -42,11 +42,11 @@ app.get("/five", async (req, res) => {
   const supabaseKey = process.env.SUPABASE_KEY;
   const supabase = createClient(supabaseUrl, supabaseKey);
 
-  console.log(supabase)
+  console.log(supabase);
 
-  const { data, error } = await supabase
+  const { data } = await supabase
   .from('ticket')
-  .select()
+  .select();
 
   
   //if (error) throw error;
