@@ -40,7 +40,15 @@ app.get("/four", (req, res) => {
 app.get("/five", async (req, res) => {
   const supabaseUrl = "https://obpglrrzjmajyxslbowq.supabase.co";
   const supabaseKey = process.env.SUPABASE_KEY;
-  const supabase = createClient(supabaseUrl, supabaseKey);
+  const supabase    = createClient(
+        supabaseUrl, 
+        supabaseKey,
+        { 
+          db:{ 
+            schema: 'public' 
+          } 
+        }
+    );
 
   console.log(supabaseKey)
 
