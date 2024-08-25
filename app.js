@@ -44,10 +44,16 @@ app.get("/five", async (req, res) => {
 
   console.log(supabase);
 
-  const { data } = await supabase
+  const query = await supabase
   .from('ticket')
   .select();
 
+  var data = [];
+
+  if(query['data']){
+    console.log(query['data']);
+    data = query['data'];
+  }
   
   //if (error) throw error;
   res.json({
