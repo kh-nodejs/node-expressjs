@@ -42,13 +42,15 @@ app.get("/five", async (req, res) => {
   const supabaseKey = process.env.SUPABASE_KEY;
   const supabase = createClient(supabaseUrl, supabaseKey);
 
-  console.log(supabase);
+  //console.log(supabase);
 
   let tickets = await supabase
   .from('ticket')
   .select('*');
 
   var data = [];
+
+  console-log(tickets);
 
   if(tickets['data']){
     console.log(tickets['data']);
