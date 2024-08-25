@@ -7,6 +7,8 @@ require('dotenv').config()
 const app = express();
 const port = process.env.PORT || 3000;
 
+app.use(express.json());
+
 app.get("/", (req, res) => {
   res.json({
     message: "Hola Mundo",
@@ -37,40 +39,97 @@ app.get("/four", (req, res) => {
   });
 });
 
-app.get("/five", async (req, res) => {
+app.get("/view", async (req, res) => {
   const supabaseUrl = "https://obpglrrzjmajyxslbowq.supabase.co";
   const supabaseKey = process.env.SUPABASE_KEY;
-  const supabase    = createClient(
-        supabaseUrl, 
-        supabaseKey,
-        { 
-          db:{ 
-            schema: 'public' 
-          } 
-        }
-    );
+  const supabase = createClient(
+    supabaseUrl,
+    supabaseKey,
+    {
+      db: {
+        schema: 'public'
+      }
+    }
+  );
 
   console.log(supabaseKey)
 
   //console.log(supabase);
 
   let tickets = await supabase
-  .from('ticket')
-  .select('*');
+    .from('ticket')
+    .select('*');
 
   var data = [];
 
   console.log(tickets);
 
-  if(tickets['data']){
+  if (tickets['data']) {
     console.log(tickets['data']);
     data = tickets['data'];
   }
-  
+
   //if (error) throw error;
   res.json({
-    message: "Five",
+    type: "view",
     data: data
+  });
+});
+
+
+app.get("/set", async (req, res) => {
+  const supabaseUrl = "https://obpglrrzjmajyxslbowq.supabase.co";
+  const supabaseKey = process.env.SUPABASE_KEY;
+  const supabase = createClient(
+    supabaseUrl,
+    supabaseKey,
+    {
+      db: {
+        schema: 'public'
+      }
+    }
+  );
+
+  //console.log(supabaseKey)
+
+  var created_at = req.body.created_at;
+  var updated_at = req.body.created_at;
+  var ticket = req.body.ticket;
+  var date = req.body.date;
+  var execution = req.body.execution;
+  var time = req.body.time;
+  var type = req.body.type;
+  var status = req.body.status;
+  var comments = req.body.comments;
+  var priority = req.body.priority;
+  var user_id = req.body.user_id;
+
+
+  //console.log(supabase);
+  const { statusText, status, error } = await supabase
+    .from('ticket')
+    .insert
+    (
+      {
+        created_at: created_at,
+        updated_at: created_at,
+        ticket: ticket,
+        date: date,
+        execution: execution,
+        time: time,
+        type: type,
+        status: status,
+        comments: comments,
+        priority: priority,
+        user_id: user_id,
+        deleted: false
+      }
+    );
+
+  res.json({
+    type: "view",
+    result: statusText,
+    status
   });
 });
 
