@@ -56,20 +56,10 @@ app.get("/view", async (req, res) => {
 
   //console.log(supabase);
 
-  let tickets = await supabase
+  let {data, error} = await supabase
     .from('ticket')
     .select('*');
 
-  var data = [];
-
-  console.log(tickets);
-
-  if (tickets['data']) {
-    console.log(tickets['data']);
-    data = tickets['data'];
-  }
-
-  //if (error) throw error;
   res.json({
     type: "view",
     data: data
