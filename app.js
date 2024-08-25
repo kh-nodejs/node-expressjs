@@ -50,7 +50,7 @@ app.get("/five", async (req, res) => {
 
   var data = [];
 
-  console-log(tickets);
+  console.log(tickets);
 
   if(tickets['data']){
     console.log(tickets['data']);
