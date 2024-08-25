@@ -45,7 +45,7 @@ app.get("/five", async (req, res) => {
   console.log(supabase)
 
   const { data, error } = await supabase
-  .from('tickets')
+  .from('ticket')
   .select()
 
   
