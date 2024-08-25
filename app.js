@@ -99,7 +99,7 @@ app.get("/set", async (req, res) => {
   var execution = req.body.execution;
   var time = req.body.time;
   var type = req.body.type;
-  var status = req.body.status;
+  var state = req.body.status;
   var comments = req.body.comments;
   var priority = req.body.priority;
   var user_id = req.body.user_id;
@@ -118,7 +118,7 @@ app.get("/set", async (req, res) => {
         execution: execution,
         time: time,
         type: type,
-        status: status,
+        status: state,
         comments: comments,
         priority: priority,
         user_id: user_id,
